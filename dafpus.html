@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Single Card Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+   <style>
+        /* Gaya Kustom dari file utama */
+        :root {
+    --color-primary: #0a1a3a; /* Biru Tua Navy untuk navbar */
+    --color-secondary: #fcd34d; /* Gold/Kuning */
+    --color-background: #fff9d6; /* Kuning pucat untuk background */
+    --color-text: #1f2937; /* Teks gelap */
+}
+
+.hero-image {
+    background-image: url("konsumerisme1.jpg"); /* ganti sesuai gambar */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 30px; /* 🟠 nilai bisa diubah */
+    overflow: hidden;    /* penting agar sudut gambar ikut membulat */
+}
+
+        
+        body {
+            margin: 0%;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-background); 
+            color: var(--color-text); 
+            scroll-behavior: smooth;
+            padding-top: 80px; 
+        }
+
+        /* Navbar Background */
+        .header-bg {
+            background-color: var(--color-primary);
+        }
+
+        /* Penekanan Judul Mirip Garis Bawah Bootstrap */
+        .section-title {
+            position: relative;
+            padding-bottom: 0.5rem;
+            color: var(--color-primary); 
+            font-weight: 800;
+        }
+
+        /* Garis bawah di tengah */
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 50%; 
+            transform: translateX(-50%);
+            bottom: 0;
+            width: 100px;
+            height: 5px; 
+            background-color: var(--color-secondary);
+            border-radius: 9999px;
+        }
+
+        .nav-link {
+            color: white;
+            transition: color 0.3s ease, border-bottom 0.3s ease;
+            padding-bottom: 4px;
+        }
+
+        .nav-link:hover {
+            color: var(--color-secondary);
+            border-bottom: 2px solid var(--color-secondary);
+        }
+
+        /* Style untuk Logo Serviam */
+        .serviam-logo-link {
+            display: inline-block;
+            border: 4px solid var(--color-secondary); 
+            border-radius: 8px; 
+            background-color: white; 
+            padding: 5px; 
+            line-height: 0; 
+            transition: all 0.3s ease-in-out; 
+        }
+
+        .serviam-logo-link.shrunk {
+            padding: 3px; 
+            border: 2px solid var(--color-secondary); 
+        }
+        
+        .serviam-logo-img {
+            height: 70px; 
+            width: auto;
+            display: block;
+            transition: height 0.3s ease-in-out; 
+        }
+
+        .serviam-logo-img.shrunk {
+            height: 40px; 
+        }
+        
+        /* Style Kartu Konten */
+        .content-card {
+            background-color: white;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
+        }
+
+        .content-card:hover {
+            box-shadow: 0 10px 15px -3px rgba(30, 58, 138, 0.2), 0 4px 6px -2px rgba(30, 58, 138, 0.05);
+            transform: translateY(-2px);
+        }
+
+        /* Gaya Khusus untuk Foto Anggota */
+        .member-photo {
+            width: 120px; 
+            height: 120px; 
+            border-radius: 50%; 
+            object-fit: cover; 
+            border: 4px solid var(--color-secondary); 
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
+            margin: 0 auto 1rem auto; 
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header id="main-header" class="sticky top-0 z-50 header-bg shadow-2xl transition duration-300 ease-in-out transform">
+        <nav id="main-nav" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-start items-center transition-all duration-300 ease-in-out"> 
+            
+            <a href="#title-content" id="serviam-logo-link" class="serviam-logo-link">
+                <img id="serviam-logo-img" src="download__1_-removebg-preview.png" alt="Logo Serviam" class="serviam-logo-img">
+            </a>
+            
+            <div class="ml-auto flex items-center">
+                <div class="hidden md:flex space-x-10">
+                    <a href="cadangan.html" class="nav-link">Isi Konten</a>
+                    <a href="studikasus.html" class="nav-link">Studi Kasus & UUD</a> <a href="cadangan.html#video-section" class="nav-link">Pembuatan Produk Nabati</a> <a href="dafpus.html" class="nav-link">Sumber (Daftar Pustaka)</a>
+                    <a href="cadangan.html#credit" class="nav-link">Anggota Kelompok</a>
+                </div>
+                
+                <button id="mobile-menu-button" class="md:hidden text-white hover:text-var(--color-secondary) focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+            </div>
+        </nav>
+    </header>
+    
+    
+<!-- MOBILE MENU -->
+<div id="mobile-menu" class="hidden md:hidden bg-blue-900 shadow-xl">
+    <a href="#title-content" class="block px-4 py-3 text-white border-b nav-link">Home</a>
+    <a href="#main-content" class="block px-4 py-3 text-white nav-link">Isi Konten</a>
+</div>
+<!-- SINGLE CARD -->
+<section id="main-content" class="py-16">
+    <h3 class="section-title text-4xl mb-12 text-center">Daftar Pustaka</h3>
+
+    <div class="max-w-5xl mx-auto">
+        <div class="content-card rounded-xl p-8">
+        <ol class="list-decimal list-inside ml-4 space-y-4">
+            <li class="pl-2">Asmira, Esti. (2022). Making a spectacle of the colony: Producing and consuming Pasar Gambir in the Dutch East Indies. <em>Journal of Southeast Asian Studies</em>. Cambridge University Press & Assessment.</li>
+            <li class="pl-2">Asri, Fadhila Husna. (n.d.). Pola kolonisasi Pemerintah Kolonial Hindia Belanda di Lampung dan Mapili (1905–1942). <em>Candi: Jurnal Pendidikan dan Penelitian Sejarah</em>. Jurnal Universitas Sebelas Maret.</li>
+            <li class="pl-2">Harkantininsih, Naniek. (2014). <em>Pengaruh kolonialisme di Nusantara</em>. Jakarta: Pusat Arkeologi Nasional.</li>
+            <li class="pl-2">Lukito, Yulia Nurliani & Miranda, Fildza. (2018). Hybrid Architecture and Contested Space of Colonial Interaction: Colonial Exhibitions at Pasar Gambir of Batavia and Jaarmarkt of Surabaya. <em>IOP Conference Series: Earth and Environmental Science</em>, 213(1). https://doi.org/10.1088/1755-1315/213/1/012029.</li>
+            <li class="pl-2">Lukito, Yulia Nurliani. (2019). Colonial exhibitions, hybrid architecture, and the interpretation of modernity in the Dutch East Indies. <em>Journal of Cultural Geography</em>, 36(3), 291–316. https://doi.org/10.1080/08873631.2019.1624039.</li>
+            <li class="pl-2">Sitohang, Mawar & Bello, Petrus C.K.L. (2025). Konsumerisme dan korupsi: Perspektif budaya dan hukum. <em>Jurnal Hukum to-Ra: Hukum Untuk Mengatur dan Melindungi Masyarakat</em>, 11(2), 277–301. https://doi.org/10.55809/tora.v11i2.583.</li>
+            <li class="pl-2">Ufrida, Khudhriyatul & Harianto, Sugeng. (2022). Konsumerisme makanan siap saji sebagai gaya hidup remaja di Kota Surabaya: Studi kasus siswi SMA Muhammadiyah 4 Kota Surabaya. <em>Jurnal Analisa Sosiologi</em>, 11(1). Jurnal Universitas Sebelas Maret.</li>
+            <li class="pl-2">Van de Meer, Arnout H.C. (2017). <em>Performing Colonial Modernity</em>. Colby College.</li>
+            <li class="pl-2">https://tribratanewsntt.com/polda-ntt-ungkap-dua-kasus-pelanggaran-perlindungan-terhadap-program-pepemerintah</li>
+
+        </ol>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const button = document.getElementById('mobile-menu-button');
+        const menu = document.getElementById('mobile-menu');
+        const mainHeader = document.getElementById('main-header');
+        const mainNav = document.getElementById('main-nav');
+
+        button.addEventListener('click', () => menu.classList.toggle('hidden'));
+
+        let prevScroll = window.pageYOffset;
+
+        window.onscroll = () => {
+            let current = window.pageYOffset;
+
+            // shrink navbar
+            if (current > 80) {
+                mainNav.classList.remove('py-4');
+                mainNav.classList.add('py-2');
+            } else {
+                mainNav.classList.add('py-4');
+                mainNav.classList.remove('py-2');
+            }
+
+            // hide/show navbar
+            if (prevScroll > current) {
+                mainHeader.classList.remove('-translate-y-full');
+            } else {
+                if (current > 80) {
+                    mainHeader.classList.add('-translate-y-full');
+                }
+            }
+            prevScroll = current;
+        };
+    });
+</script>
+
+</body>
+</html>
